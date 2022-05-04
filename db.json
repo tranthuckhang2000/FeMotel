@@ -1,0 +1,31 @@
+{
+  "accounts": [
+    {
+      "id": 36,
+      "first_name": "Fredfsdfdf",
+      "last_name": "dfdsfdsfdsBlair",
+      "email": "dsfsdfreddyb34@gmail.com"
+    },
+    {
+      "fullName": "Khang",
+      "email": "khangtran0944@gmail.com",
+      "phone": "0944871309",
+      "pass": "1",
+      "id": 37
+    },
+    {
+      "fullName": "Khang",
+      "email": "18130104@st.hcmuaf.edu.vn",
+      "phone": "0879719576",
+      "pass": "1",
+      "id": 38
+    },
+    {
+      "fullName": "Khang",
+      "email": "gdfgdf@gdgdf",
+      "phone": "4543645654",
+      "pass": "2",
+      "id": 39
+    }
+  ]
+}
