@@ -1,0 +1,372 @@
+body {
+    color: #ffffff;
+}
+
+h1,
+h2,
+h3 {
+    color: #ffffff;
+}
+
+.bkg {
+    background-color: #212d37;
+}
+
+.btn-grad {
+    background-image: linear-gradient(to right, #0ee951, #00dabf);
+}
+
+.btn-grad {
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 10px;
+    display: block;
+}
+
+.btn-grad:hover {
+    background-position: right center;
+    /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+.active {
+    background: -webkit-linear-gradient(#0ee951, #00dabf);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#active {
+    background-color: #1c262f;
+}
+
+#nav-main {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    font-weight: 600;
+    z-index: 200;
+}
+
+#nav-main .navbar-light .navbar-toggler-icon {
+    background-image: url("../images/menu-mobile-icon.png");
+    color: #ffffff;
+}
+
+#nav-main .navbar-light .navbar-toggler {
+    color: #ffffff;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+#nav-main a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+#nav-main a:hover {
+    background: -webkit-linear-gradient(#0ee951, #00dabf);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#nav-main #nav-item {
+    justify-content: right;
+}
+
+.icon-des {
+    padding: 20px 0;
+    padding-right: 5px;
+    margin: 10px 0;
+    background: -webkit-linear-gradient(#0ee951, #00dabf);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#banner-intro {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 100;
+    background-image: url(../images/home.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#banner-intro .intro-title {
+    display: flex;
+    flex-direction: column;
+    height: 370px;
+    justify-content: space-between;
+    text-align: left;
+    color: #ffffff;
+    margin-top: 200px;
+}
+
+#banner-intro .intro-title h1 {
+    font-size: 60px;
+}
+
+#banner-intro .btn-start {
+    border: 1px solid;
+    width: 140px;
+    padding: 11px 20px;
+    border: 2px solid transparent;
+    border-image: linear-gradient(#0ee951, #00dabf);
+    border-image-slice: 3;
+    cursor: pointer;
+    -webkit-box-shadow: 10px 10px 0px -1px #0ee951;
+    box-shadow: 7px 7px 0px -1px #0ee951;
+}
+
+.main-body {
+    padding-top: 100px;
+}
+
+.main-body .search-form {
+    display: flex;
+    width: 23%;
+    justify-content: space-between;
+}
+
+.main-body .frame-chart {
+    border: 3px solid #ffffff;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.main-body .frame-chart .title {
+    padding: 10px 0;
+    border-bottom: 3px solid #ffffff;
+}
+
+.padding-set {
+    padding: 10px;
+}
+
+.trans,
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.trans .top-table,
+.content .top-table {
+    height: 35%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.trans .top-table .value,
+.content .top-table .value {
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+}
+
+.trans .top-table .value h2,
+.content .top-table .value h2 {
+    color: green;
+}
+
+.trans .top-table .value h6,
+.content .top-table .value h6 {
+    display: flex;
+    align-items: flex-end;
+}
+
+.trans .top-table .table-left,
+.content .top-table .table-left {
+    flex: 1;
+}
+
+.trans .top-table .table-left .time,
+.content .top-table .table-left .time {
+    display: flex;
+    justify-content: space-between;
+}
+
+.trans .top-table .table-left .time h6,
+.content .top-table .table-left .time h6 {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    text-align: right;
+}
+
+.trans .top-table .table-right,
+.content .top-table .table-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.trans .top-table .table-right h6,
+.content .top-table .table-right h6 {
+    text-align: center;
+}
+
+.trans .bot-table,
+.content .bot-table {
+    height: 65%;
+    display: flex;
+}
+
+.trans .bot-table .bot-value,
+.content .bot-table .bot-value {
+    color: #ffffff;
+    border-top: 3px solid;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.item-value {
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-value p {
+    margin: auto;
+}
+
+.speed-chart .chart {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.speed-chart .chart img {
+    width: 50%;
+}
+
+.speed-chart .finger {
+    position: absolute;
+    bottom: 43%;
+}
+
+.speed-chart .finger img {
+    width: 90%;
+}
+
+.speed-chart .description {
+    position: absolute;
+    bottom: 18%;
+}
+
+.speed-chart .description .percent {
+    background-color: #4eabd7;
+    padding: 5px 30px;
+    border-radius: 12px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+.speed-chart .description .percent h5 {
+    margin: auto 0;
+}
+
+.speed-chart .description .status {
+    color: #4eabd7;
+    text-transform: uppercase;
+    margin-top: 5%;
+}
+
+.speed-chart .description .status h5 {
+    font-weight: 600;
+}
+
+.pont-bus {
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+}
+
+.pont-bus .item-value-bus {
+    margin: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 3px dotted;
+}
+
+@media screen and (min-width: 769px) {
+    .height-table {
+        min-height: 45px;
+    }
+
+    h6.height-table {
+        font-size: 10px;
+    }
+
+    .trans,
+    .content {
+        height: 410px;
+    }
+
+    .trans .top-table,
+    .content .top-table {
+        height: 35%;
+    }
+
+    .trans .bot-table,
+    .content .bot-table {
+        height: 65%;
+    }
+
+    .trans p,
+    .trans h6,
+    .content p,
+    .content h6 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .height-table {
+        min-height: 37px;
+    }
+
+    .value {
+        font-size: 10px;
+    }
+
+    .value h2 {
+        font-size: 18px;
+    }
+
+    .trans,
+    .content {
+        height: 250px;
+    }
+
+    .trans .top-table,
+    .content .top-table {
+        height: 35%;
+    }
+
+    .trans .bot-table,
+    .content .bot-table {
+        height: 65%;
+    }
+
+    .trans p,
+    .trans h6,
+    .content p,
+    .content h6 {
+        font-size: 12px;
+    }
+}
