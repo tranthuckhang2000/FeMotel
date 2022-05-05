@@ -16,9 +16,9 @@ const Header = (props) => {
 
   const menu = [
     // { nameEn: "", nameVi: "Tra Cứu Kỹ Thuật" },
-    { nameEn: "home", nameVi: "Trang Chủ" },
-    { nameEn: "find", nameVi: "Tra Cứu Phòng Trọ" },
-    { nameEn: "post-motel", nameVi: "Đăng Trọ Mới" },
+    { nameEn: "/home", nameVi: "Trang Chủ" },
+    { nameEn: "/find", nameVi: "Tra Cứu Phòng Trọ" },
+    { nameEn: "/post-motel", nameVi: "Đăng Trọ Mới" },
   ];
 
   // const motel-room
@@ -108,7 +108,7 @@ const Header = (props) => {
                   <NavItem key={item.nameEn}>
                     <NavLink
                       className={urlPath === item.nameEn ? "active" : {}}
-                      to={item.nameEn}
+                      href={item.nameEn}
                       // onClick={() => setNameTicker(item.nameEn)}
                     >
                       {item.nameVi} |
