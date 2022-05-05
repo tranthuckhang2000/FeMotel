@@ -10,6 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 //context
 import { AccountProvider } from "./contexts/Account.Context";
+import { MotelProvider } from "./contexts/Motel.Context";
 
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -21,7 +22,9 @@ ReactDOM.render(
     <Provider store={store}>
       <BrowserRouter>
         <AccountProvider>
-          <App />
+          <MotelProvider>
+            <App />
+          </MotelProvider>
         </AccountProvider>
       </BrowserRouter>
     </Provider>

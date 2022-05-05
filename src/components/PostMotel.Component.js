@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Button, FormGroup, Label, Input } from "reactstrap";
 import { Form, Field } from "react-final-form";
-
+import { MotelContext } from "../contexts/Motel.Context";
 const onSubmit = (values) => {
   console.log(values);
 };
-export default function PostMotel() {
-  document.title = "Đăng phòng";
+export default function PostMotel({ listMotel, saveMotel, getAllMotel }) {
+
+  const motelContext = useContext(MotelContext);
+
+  useEffect(() => {
+    getAllMotel();
+    document.title = "Đăng phòng";
+  }, []);
+
   return (
     <div className="post-motel container">
       <div className="post-motel-form">
@@ -14,37 +21,6 @@ export default function PostMotel() {
         <div className="">
           <Form
             onSubmit={onSubmit}
-            validate={(values) => {
-              const errors = {};
-              function validateEmail(email) {
-                var re =
-                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                return re.test(String(email).toLowerCase());
-              }
-              if (!values.fname) {
-                errors.fname = "Required";
-              }
-              if (!values.lname) {
-                errors.lname = "Required";
-              }
-              if (!values.email) {
-                errors.email = "Required";
-              } else if (!validateEmail(values.email)) {
-                errors.email = "Not an email adress";
-              }
-              if (!values.password) {
-                errors.password = "Required";
-              }
-              if (!values.tos) {
-                errors.tos = "Required";
-              }
-              if (!values.confirmPassword) {
-                errors.confirmPassword = "Required";
-              } else if (values.confirmPassword !== values.password) {
-                errors.confirmPassword = "Does not match";
-              }
-              return errors;
-            }}
             render={({
               handleSubmit,
               values,
@@ -62,7 +38,9 @@ export default function PostMotel() {
                           {...input}
                           type="text"
                           placeholder="Tiêu đề bài viết..."
-                          invalid={meta.error && meta.touched}
+                          value={motelContext.title}
+                          onChange={(e) => motelContext.setTitle(e.target.value)}
+                          // invalid
                         />
                         {meta.error && meta.touched && (
                           <span>{meta.error}</span>
@@ -72,15 +50,16 @@ export default function PostMotel() {
                   </Field>
                 </FormGroup>
                 <FormGroup>
-                  <Label for="email">Số điện thoại</Label>
-                  <Field name="email">
+                  <Label for="phone">Số điện thoại</Label>
+                  <Field name="phone">
                     {({ input, meta }) => (
                       <div>
                         <Input
                           {...input}
-                          type="email"
+                          type="phone"
                           placeholder="Số điện thoại..."
-                          invalid={meta.error && meta.touched}
+                          value={motelContext.phone}
+                          onChange={(e) => motelContext.setPhone(e.target.value)}
                         />
                         {meta.error && meta.touched && (
                           <span>{meta.error}</span>
@@ -99,6 +78,8 @@ export default function PostMotel() {
                           type="text"
                           placeholder="Giá..."
                           invalid={meta.error && meta.touched}
+                          value={motelContext.price}
+                          onChange={(e) => motelContext.setPrice(e.target.value)}
                         />
                         {meta.error && meta.touched && (
                           <span>{meta.error}</span>
@@ -116,6 +97,8 @@ export default function PostMotel() {
                           {...input}
                           type="text"
                           placeholder="Diện tích..."
+                          value={motelContext.square}
+                          onChange={(e) => motelContext.setSquare(e.target.value)}
                           invalid={meta.error && meta.touched}
                         />
                         {meta.error && meta.touched && (
@@ -127,13 +110,15 @@ export default function PostMotel() {
                 </FormGroup>
                 <FormGroup>
                   <Label for="address">Địa chỉ</Label>
-                  <Field name="fname">
+                  <Field name="address">
                     {({ input, meta }) => (
                       <div>
                         <Input
                           {...input}
                           type="text"
                           placeholder="Địa chỉ..."
+                          value={motelContext.address}
+                          onChange={(e) => motelContext.setAddress(e.target.value)}
                           invalid={meta.error && meta.touched}
                         />
                         {meta.error && meta.touched && (
@@ -144,14 +129,17 @@ export default function PostMotel() {
                   </Field>
                 </FormGroup>
                 <FormGroup>
-                  <Label for="fname">Mô tả</Label>
-                  <Field name="fname">
+                  <Label for="des">Mô tả</Label>
+                  <Field name="des">
                     {({ input, meta }) => (
                       <div>
                         <Input
                           {...input}
-                          type="text"
+                          type="textarea"
                           placeholder="Mô tả..."
+                          value={motelContext.des}
+                          rows="5"
+                          onChange={(e) => motelContext.setDes(e.target.value)}
                           invalid={meta.error && meta.touched}
                         />
                         {meta.error && meta.touched && (
@@ -179,26 +167,20 @@ export default function PostMotel() {
                     )}
                   </Field>
                 </FormGroup>
-
-                <FormGroup check>
-                  <Field name="tos" type="checkbox">
-                    {({ input, meta }) => (
-                      <Label>
-                        <Input
-                          {...input}
-                          type="checkbox"
-                          invalid={meta.error && meta.touched}
-                        />{" "}
-                        Check Me
-                        {meta.error && meta.touched && (
-                          <span>{meta.error}</span>
-                        )}
-                      </Label>
-                    )}
-                  </Field>
-                </FormGroup>
-                <Button type="submit" color="primary" disabled={!valid}>
-                  Submit
+                <Button
+                  color="primary"
+                  onClick={() => {
+                    saveMotel(
+                      motelContext.title,
+                      motelContext.phone,
+                      motelContext.price,
+                      motelContext.square,
+                      motelContext.address,
+                      motelContext.des
+                    );
+                  }}
+                >
+                  Thêm post mới
                 </Button>
               </form>
             )}

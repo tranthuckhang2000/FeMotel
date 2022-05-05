@@ -6,7 +6,8 @@ import LogUp from "./containers/LogUp.Container";
 import LogIn from "./containers/LogIn.Container";
 import Footer from "./containers/Footer.Component";
 import MotelDetail from "./components/MotelDetail.Component";
-import PostMotel from "./components/PostMotel.Component";
+import PostMotel from "./containers/PostMotel.Container";
+import UpLoad from "./components/UpLoad.Component";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/login" element={<LogIn />} />
         <Route path="/detail" element={<MotelDetail />} />
         <Route path="/post-motel" element={<PostMotel />} />
+        <Route path="/up" element={<UpLoad/>} />
       </Routes>
       <Footer />
     </div>
