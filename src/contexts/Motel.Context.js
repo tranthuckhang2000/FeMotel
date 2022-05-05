@@ -11,6 +11,7 @@ function MotelProvider({ children }) {
   const [valid, setValid] = useState();
   const [des, setDes] = useState();
   const [img, setImg] = useState();
+  const [findName, setFindName] = useState();
 
   const validForm = (...params) => {
     setValid(true);
@@ -21,41 +22,24 @@ function MotelProvider({ children }) {
     }
   };
 
-  const findAccountByEmail = (email, listAccount) => {
-    var result = false;
-    for (let i = 0; i < listAccount.length; i++) {
-      if (listAccount[i].email === email) {
-        result = true;
+  const findMotelByTitle = (title, listMotel) => {
+    var result = [];
+    // console.log(listMotel);
+    for (let i = 0; i < listMotel.length; i++) {
+      let a = title.toLowerCase();
+      let b = listMotel[i].title.toLowerCase();
+      if (b.indexOf(a) !== -1) {
+        result.push(listMotel[i]);
       }
     }
     return result;
-
-    // console.log(result);
   };
-  const findAccountByPhone = (phone, listAccount) => {
-    var result = false;
-    if (listAccount.length > 0) {
-      for (let i = 0; i < listAccount.length; i++) {
-        if (listAccount[i].phone === phone) {
-          result = true;
-          // console.log(phone)
-          // console.log(listAccount[i]);
-        }
-      }
-      return result;
-    }
-  };
-
-  const findAccountByEmailAndPass = (email, pass, listAccount) => {
-    var result = false;
-    console.log(email);
-    console.log(pass);
-    for (let i = 0; i < listAccount.length; i++) {
-      if (listAccount[i].email === email && listAccount[i].pass === pass) {
-        result = true;
+  const findMotelById = (id, listMotel) => {
+    for (let i = 0; i < listMotel.length; i++) {
+      if (id === listMotel[i].id) {
+        return listMotel[i];
       }
     }
-    return result;
   };
 
   var value = {
@@ -75,6 +59,10 @@ function MotelProvider({ children }) {
     setDes,
     img,
     setImg,
+    findMotelByTitle,
+    findName,
+    setFindName,
+    findMotelById
   };
   return (
     <MotelContext.Provider value={value}>{children}</MotelContext.Provider>

@@ -1,12 +1,11 @@
 import { connect } from "react-redux";
-import { fetchProduct } from "../reducers/product";
 import FindMotel from "../components/FindMotel.Component";
-import { findMotel } from "../reducers/Find.Reducer";
-
+import { getAllMotel } from "../reducers/Motel.Reducer";
 const mapStateToProps = (state) => ({
-  motelItems: state.findMotel.motelItems,
+  listMotel: state.motel.listMotel,
+  isLoading: state.motel.isLoading,
+  error: state.account.error,
 });
-
-const mapActionToProps = { findMotel };
+const mapActionToProps = { getAllMotel };
 
 export default connect(mapStateToProps, mapActionToProps)(FindMotel);

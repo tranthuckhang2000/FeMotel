@@ -1,9 +1,10 @@
 :root {
-  --primary:  #1c262f;
-  --main-color:  #212d37;
-  --secondary:  #0ee951;
-  --tertiary:  #00dabf;
-  --gradient:  linear-gradient(to right, #0ee951, #00dabf);
+  --primary: #1c262f;
+  --red: #e13528;
+  --main-color: #212d37;
+  --secondary: #0ee951;
+  --tertiary: #00dabf;
+  --gradient: linear-gradient(to right, #0ee951, #00dabf);
 }
 
 body {
@@ -694,6 +695,10 @@ h3 {
   background: var(--main-color);
 }
 
+.motel-room .motel-room-item .description {
+  width: 350px;
+}
+
 .motel-room .motel-room-item .des-image {
   width: 50%;
   margin-right: 20px;
@@ -712,6 +717,37 @@ h3 {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-right: 180px;
+  width: 100%;
+}
+
+.motel-room .motel-room-item .price-square-address h6 {
+  min-width: 90px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 2px solid var(--red);
+  margin-right: 5px;
+  padding: 1px 3px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.motel-room .motel-room-item .price-square-address h6:nth-child(3) {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+}
+
+.motel-room .motel-room-item .des {
+  width: 100%;
+  height: auto;
 }
 
 .footer {
