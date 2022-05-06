@@ -9,9 +9,9 @@ export default function FindMotel({ listMotel, getAllMotel }) {
   const [findStatus, setFindStatus] = useState(false);
 
   const squareArray = [
-    { id: 1, title: "Dưới 10m²" },
-    { id: 2, title: "10m² - 20m²" },
-    { id: 3, title: "30m² - 40m²" },
+    { id: 1, title: "Dưới 10m²", valueLeft: 0, valueRight: 10 },
+    { id: 2, title: "10m² - 20m²", valueLeft: 10, valueRight: 20 },
+    { id: 3, title: "30m² - 40m²", valueLeft: 30, valueRight: 40 },
   ];
   const priceArray = [
     { id: 1, title: "Dưới 1tr" },
@@ -29,10 +29,13 @@ export default function FindMotel({ listMotel, getAllMotel }) {
     document.title = "Tìm Kiếm";
     getAllMotel();
   }, []);
+  useEffect(() => {
+    setListMotelFind(listMotel);
+  }, [listMotel]);
 
   return (
     <div className="container-fluid bkg">
-      {/* {console.log(listMotel)} */}
+      {console.log(listMotel)}
       <div className="container main main-body">
         <h1>Tìm Kiếm Phòng Trọ</h1>
         <div className="search-from">
@@ -59,11 +62,10 @@ export default function FindMotel({ listMotel, getAllMotel }) {
             Tìm kiếm
           </button>
         </div>
-        <div className="row">
+        <div className="row" style={{minHeight: "800px"}}>
           <div className="col-sm-9">
             <div className="motel-room">
               {listMotelFind.length > 0 &&
-                findStatus &&
                 listMotelFind.map((item) => (
                   <div key={item.id} className="border-gradient">
                     <div className="motel-room-item">
@@ -91,7 +93,7 @@ export default function FindMotel({ listMotel, getAllMotel }) {
                   </div>
                 ))}
 
-              {listMotel.length &&
+              {/* {listMotel.length &&
                 !findStatus &&
                 listMotel.map((item) => (
                   <div key={item.id} className="border-gradient">
@@ -120,7 +122,7 @@ export default function FindMotel({ listMotel, getAllMotel }) {
                       </div>
                     </a>
                   </div>
-                ))}
+                ))} */}
             </div>
           </div>
           <div style={{ marginTop: "20px" }} className="filter col-sm-3">
@@ -133,7 +135,18 @@ export default function FindMotel({ listMotel, getAllMotel }) {
                       <input
                         type="radio"
                         checked={item.id == square}
-                        onChange={() => setSquare(item.id)}
+                        onChange={() => {
+                          setSquare(item.id);
+                          setListMotelFind(
+                            motelContext.fillMotelBySquare(
+                              item.valueLeft,
+                              item.valueRight,
+                              listMotelFind
+                            )
+                          );
+                          console.log("changing");
+                          setFindStatus(true);
+                        }}
                       />
                       <label>{item.title}</label>
                     </li>

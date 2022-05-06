@@ -34,6 +34,19 @@ function MotelProvider({ children }) {
     }
     return result;
   };
+  const fillMotelBySquare = (squareLeft, squareRight, listMotel) => {
+    var result = [];
+    for (let i = 0; i < listMotel.length; i++) {
+      if (
+        listMotel[i].square >= squareLeft &&
+        listMotel[i].square < squareRight
+        ) {
+          result.push(listMotel[i]);
+        }
+      }
+      console.log(result);
+    return result;
+  };
   const findMotelById = (id, listMotel) => {
     for (let i = 0; i < listMotel.length; i++) {
       if (id === listMotel[i].id) {
@@ -62,7 +75,8 @@ function MotelProvider({ children }) {
     findMotelByTitle,
     findName,
     setFindName,
-    findMotelById
+    findMotelById,
+    fillMotelBySquare
   };
   return (
     <MotelContext.Provider value={value}>{children}</MotelContext.Provider>

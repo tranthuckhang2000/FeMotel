@@ -78,4 +78,5 @@ export const getMotelById = (id) => async (dispatch) => {
   }
 };
 
+
 export default motelSlice.reducer;
