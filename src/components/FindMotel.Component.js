@@ -68,28 +68,30 @@ export default function FindMotel({ listMotel, getAllMotel }) {
               {listMotelFind.length > 0 &&
                 listMotelFind.map((item) => (
                   <div key={item.id} className="border-gradient">
-                    <div className="motel-room-item">
-                      <div className="des-image">
-                        <img src={motel} alt="motel-room-img"></img>
+                    <a href={`detail/${item.id}`} alt="detail">
+                      <div className="motel-room-item">
+                        <div className="des-image">
+                          <img src={motel} alt="motel-room-img"></img>
+                        </div>
+                        <div className="description">
+                          <div className="title">
+                            <h4>{item.title}</h4>
+                          </div>
+                          <div className="price-square-address">
+                            <h6>{item.price}tr/tháng</h6>
+                            <h6>{item.square}m²</h6>
+                            <h6>{item.address}</h6>
+                          </div>
+                          <div className="des">
+                            <p>{item.des}</p>
+                          </div>
+                          <div className="contact">
+                            <h6>Gọi {item.phone}</h6>
+                            <h6>Nhắn Zalo</h6>
+                          </div>
+                        </div>
                       </div>
-                      <div className="description">
-                        <div className="title">
-                          <h4>{item.title}</h4>
-                        </div>
-                        <div className="price-square-address">
-                          <h6>{item.price}tr/tháng</h6>
-                          <h6>{item.square}m²</h6>
-                          <h6>{item.address}</h6>
-                        </div>
-                        <div className="des">
-                          <p>{item.des}</p>
-                        </div>
-                        <div className="contact">
-                          <h6>Gọi {item.phone}</h6>
-                          <h6>Nhắn Zalo</h6>
-                        </div>
-                      </div>
-                    </div>
+                    </a>
                   </div>
                 ))}
 
