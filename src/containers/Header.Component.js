@@ -1,4 +1,11 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, {
+  useState,
+  useContext,
+  createContext,
+  useEffect,
+  useNav,
+  useMemo,
+} from "react";
 import {
   Collapse,
   Navbar,
@@ -8,10 +15,15 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
+import { AccountContext } from "../contexts/Account.Context";
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [urlPath, setUrlPath] = useState("");
+  const [nameUser, setNameUser] = useState();
+  const [logInStatus, setLogInStatus] = useState(false);
+  const accountContext = useContext(AccountContext);
+
   const toggle = () => setIsOpen(!isOpen);
 
   const menu = [
@@ -22,11 +34,13 @@ const Header = (props) => {
   ];
 
   useEffect(() => {
-    console.log("change account");
   }, [localStorage.getItem("account")]);
 
   const logOut = () => {
     localStorage.removeItem("account");
+    accountContext.setFullName(null);
+
+    
   };
   // const motel-room
   const [styleNav, setStyleNav] = useState(false);
@@ -45,6 +59,16 @@ const Header = (props) => {
     const url = window.location.pathname.slice(1);
     setUrlPath(url);
   }, []);
+  useMemo(() => {
+    if (localStorage.getItem("account")) {
+      setNameUser(localStorage.getItem("account"));
+      // setLogInStatus(true);
+
+    }
+  }, []);
+  // useEffect(() => {
+
+  // }, [accountContext.])
 
   return (
     <div>
@@ -53,6 +77,7 @@ const Header = (props) => {
           <Navbar className="container" light expand="md">
             <NavbarBrand href="/home">
               {/* <Link to="/">App Exam</Link> */}
+              {console.log(accountContext.fullName)}
               Zero Nine
             </NavbarBrand>
             <Collapse id="nav-item" isOpen={isOpen} navbar>
@@ -88,9 +113,10 @@ const Header = (props) => {
                         style={{ color: "white" }}
                         onClick={() => {
                           logOut();
+                          setLogInStatus(false);
                         }}
                       >
-                       Đăng xuất
+                        Đăng xuất
                       </span>
                     </NavLink>
                   </NavItem>
@@ -155,10 +181,7 @@ const Header = (props) => {
                 {localStorage.getItem("account") && (
                   <NavItem>
                     <NavLink className="" href="#">
-                      <span style={{ color: "#09e381" }}>
-                        {localStorage.getItem("account")}{" "}
-                      </span>
-                      /{" "}
+                      <span style={{ color: "#09e381" }}>{localStorage.getItem("account")} </span>/{" "}
                       <span
                         style={{ color: "white" }}
                         onClick={() => {

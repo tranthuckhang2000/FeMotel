@@ -35,7 +35,6 @@ export default function FindMotel({ listMotel, getAllMotel }) {
 
   return (
     <div className="container-fluid bkg">
-      {console.log(listMotel)}
       <div className="container main main-body">
         <h1>Tìm Kiếm Phòng Trọ</h1>
         <div className="search-from">
@@ -56,7 +55,6 @@ export default function FindMotel({ listMotel, getAllMotel }) {
                 motelContext.findMotelByTitle(motelContext.findName, listMotel)
               );
               setFindStatus(true);
-              console.log(listMotel);
             }}
           >
             Tìm kiếm

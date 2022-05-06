@@ -11,6 +11,8 @@ function AccountProvider({ children }) {
   const [valid, setValid] = useState();
   const [statusLogIn, setStatusLogIn] = useState();
   const [countLogIn, setCountLogIn] = useState(0);
+  const [logInStatus, setLogInStatus] = useState(false);
+
   // const [ , set] = useState();
   // const [ , set] = useState();
   // const [ , set] = useState();
@@ -99,7 +101,9 @@ function AccountProvider({ children }) {
     setStatusLogIn,
     countLogIn,
     setCountLogIn,
-    getAccountByEmail
+    getAccountByEmail,
+    logInStatus,
+    setLogInStatus,
   };
   return (
     <AccountContext.Provider value={value}>{children}</AccountContext.Provider>
