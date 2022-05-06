@@ -9,6 +9,10 @@ export default function PostMotel({ listMotel, saveMotel, getAllMotel }) {
   const motelContext = useContext(MotelContext);
   const acc = useRef();
 
+  const notify = () => {
+    alert("Thêm bài đăng thành công");
+  };
+
   useEffect(() => {
     getAllMotel();
     document.title = "Đăng phòng";
@@ -24,7 +28,7 @@ export default function PostMotel({ listMotel, saveMotel, getAllMotel }) {
     <div className="post-motel container">
       {!acc.current && (
         <div className="post-motel-form">
-          <h1 style={{  position: "fixed", top: "30%", left: "12%",}}>
+          <h1 style={{ position: "fixed", top: "30%", left: "12%" }}>
             Bạn vui lòng đăng nhập để sử dụng chức năng này
           </h1>
         </div>
@@ -187,6 +191,12 @@ export default function PostMotel({ listMotel, saveMotel, getAllMotel }) {
                         motelContext.address,
                         motelContext.des
                       );
+                      notify();
+                      motelContext.setTitle("");
+                      motelContext.setPhone("");
+                      motelContext.setPrice("");
+                      motelContext.setSquare("");
+                      motelContext.setDes("");
                     }}
                   >
                     Thêm post mới
