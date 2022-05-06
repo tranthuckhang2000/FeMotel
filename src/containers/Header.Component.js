@@ -22,9 +22,8 @@ const Header = (props) => {
   ];
 
   useEffect(() => {
-    console.log("change account")
-
-  }, [localStorage.getItem("account")])
+    console.log("change account");
+  }, [localStorage.getItem("account")]);
 
   // const motel-room
   const [styleNav, setStyleNav] = useState(false);
@@ -77,10 +76,7 @@ const Header = (props) => {
                 </NavItem>
                 {localStorage.getItem("account") && (
                   <NavItem>
-                    <NavLink
-                      className="active"
-                      href="#"
-                    >
+                    <NavLink className="active" href="#">
                       {localStorage.getItem("account")}
                     </NavLink>
                   </NavItem>
@@ -91,11 +87,12 @@ const Header = (props) => {
                       className=""
                       href="/login"
                       // onClick={() => setNameTicker(item.nameEn)}
-                    > Đăng nhập
+                    >
+                      {" "}
+                      Đăng nhập
                     </NavLink>
                   </NavItem>
                 )}
-
               </Nav>
             </Collapse>
           </Navbar>
@@ -143,10 +140,7 @@ const Header = (props) => {
                 </NavItem>
                 {localStorage.getItem("account") && (
                   <NavItem>
-                    <NavLink
-                      className="active"
-                      href="#"
-                    >
+                    <NavLink className="active" href="#">
                       {localStorage.getItem("account")}
                     </NavLink>
                   </NavItem>
@@ -157,11 +151,12 @@ const Header = (props) => {
                       className=""
                       href="/login"
                       // onClick={() => setNameTicker(item.nameEn)}
-                    > Đăng nhập
+                    >
+                      {" "}
+                      Đăng nhập
                     </NavLink>
                   </NavItem>
                 )}
-                
               </Nav>
             </Collapse>
           </Navbar>
