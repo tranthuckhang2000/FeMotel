@@ -24,7 +24,11 @@ const Header = (props) => {
   useEffect(() => {
     console.log("change account");
   }, [localStorage.getItem("account")]);
+  
+  const logOut = () => {
+    localStorage.removeItem("account")
 
+  }
   // const motel-room
   const [styleNav, setStyleNav] = useState(false);
   useEffect(() => {
@@ -76,8 +80,11 @@ const Header = (props) => {
                 </NavItem>
                 {localStorage.getItem("account") && (
                   <NavItem>
-                    <NavLink className="active" href="#">
-                      {localStorage.getItem("account")}
+                    <NavLink className="active" href="#"
+                    onClick={() => {
+                      logOut()
+                    }}>
+                      {localStorage.getItem("account")}cccc
                     </NavLink>
                   </NavItem>
                 )}
