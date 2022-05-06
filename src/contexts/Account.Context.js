@@ -50,6 +50,17 @@ function AccountProvider({ children }) {
     }
   };
 
+  const getAccountByEmail = (email, listAccount) => {
+    var result = false;
+    for (let i = 0; i < listAccount.length; i++) {
+      if (listAccount[i].email === email) {
+        return listAccount[i];
+      }
+    }
+
+    // console.log(result);
+  };
+
   const findAccountByEmailAndPass = (email, pass, listAccount) => {
     var result = false;
     console.log(email);
@@ -88,6 +99,7 @@ function AccountProvider({ children }) {
     setStatusLogIn,
     countLogIn,
     setCountLogIn,
+    getAccountByEmail
   };
   return (
     <AccountContext.Provider value={value}>{children}</AccountContext.Provider>

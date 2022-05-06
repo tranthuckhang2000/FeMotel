@@ -4,6 +4,7 @@ import React, {
   createContext,
   useEffect,
   useNav,
+  useMemo,
 } from "react";
 import { AccountContext } from "../contexts/Account.Context";
 import { Button, FormGroup, Label, Input } from "reactstrap";
@@ -19,8 +20,12 @@ export default function LogUp({ isLoading, listAccount, getAllAccount }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getAllAccount();
-    document.title = "Đăng Nhập";
+    if (localStorage.getItem("account")) {
+      navigate("/find");
+    } else {
+      getAllAccount();
+      document.title = "Đăng Nhập";
+    }
   }, []);
 
   useEffect(() => {
@@ -33,6 +38,12 @@ export default function LogUp({ isLoading, listAccount, getAllAccount }) {
       )
     ) {
       accountContext.setStatusLogIn(true);
+      let acc = accountContext.getAccountByEmail(
+        accountContext.email,
+        listAccount
+      );
+      localStorage.setItem("account", acc.fullName);
+      // console.log(accountContext.fullName);
       navigate("/find");
     } else {
       accountContext.setStatusLogIn(false);
@@ -42,9 +53,6 @@ export default function LogUp({ isLoading, listAccount, getAllAccount }) {
   return (
     <div className="form-09">
       <h2 style={{ textAlign: "center" }}>Đăng Nhập</h2>
-      {console.log(accountContext.statusLogIn)}
-      {console.log(accountContext.valid)}
-      {console.log("----------------------------------------")}
       <div className="border-gradient">
         <Form
           onSubmit={onSubmit}

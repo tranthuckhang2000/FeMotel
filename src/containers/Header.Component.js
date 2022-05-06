@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRouteMatch, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   Collapse,
   Navbar,
@@ -20,6 +20,11 @@ const Header = (props) => {
     { nameEn: "/find", nameVi: "Tra Cứu Phòng Trọ" },
     { nameEn: "/post-motel", nameVi: "Đăng Trọ Mới" },
   ];
+
+  useEffect(() => {
+    console.log("change account")
+
+  }, [localStorage.getItem("account")])
 
   // const motel-room
   const [styleNav, setStyleNav] = useState(false);
@@ -64,21 +69,33 @@ const Header = (props) => {
                 <NavItem>
                   <NavLink
                     className=""
-                    href="/login"
-                    // onClick={() => setNameTicker(item.nameEn)}
-                  >
-                    Đăng nhập |
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink
-                    className=""
                     href="logup"
                     // onClick={() => setNameTicker(item.nameEn)}
                   >
-                    Đăng ký
+                    Đăng ký |
                   </NavLink>
                 </NavItem>
+                {localStorage.getItem("account") && (
+                  <NavItem>
+                    <NavLink
+                      className="active"
+                      href="#"
+                    >
+                      {localStorage.getItem("account")}
+                    </NavLink>
+                  </NavItem>
+                )}
+                {!localStorage.getItem("account") && (
+                  <NavItem>
+                    <NavLink
+                      className=""
+                      href="/login"
+                      // onClick={() => setNameTicker(item.nameEn)}
+                    > Đăng nhập
+                    </NavLink>
+                  </NavItem>
+                )}
+
               </Nav>
             </Collapse>
           </Navbar>
@@ -115,24 +132,36 @@ const Header = (props) => {
                     </NavLink>
                   </NavItem>
                 ))}
-                                <NavItem>
-                  <NavLink
-                    className=""
-                    href="/login"
-                    // onClick={() => setNameTicker(item.nameEn)}
-                  >
-                    Đăng nhập |
-                  </NavLink>
-                </NavItem>
                 <NavItem>
                   <NavLink
                     className=""
                     href="logup"
                     // onClick={() => setNameTicker(item.nameEn)}
                   >
-                    Đăng ký
+                    Đăng ký |
                   </NavLink>
                 </NavItem>
+                {localStorage.getItem("account") && (
+                  <NavItem>
+                    <NavLink
+                      className="active"
+                      href="#"
+                    >
+                      {localStorage.getItem("account")}
+                    </NavLink>
+                  </NavItem>
+                )}
+                {!localStorage.getItem("account") && (
+                  <NavItem>
+                    <NavLink
+                      className=""
+                      href="/login"
+                      // onClick={() => setNameTicker(item.nameEn)}
+                    > Đăng nhập
+                    </NavLink>
+                  </NavItem>
+                )}
+                
               </Nav>
             </Collapse>
           </Navbar>
