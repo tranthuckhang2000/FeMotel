@@ -15,6 +15,10 @@ export default function LogUp({
   document.title = "Đăng Ký";
   const accountContext = useContext(AccountContext);
 
+  const addAccountToStore = (fullName) => {
+    localStorage.setItem("account", fullName);
+  };
+
   useEffect(() => {
     getAllAccount();
   }, []);
@@ -96,10 +100,11 @@ export default function LogUp({
                         !accountContext.phone && (
                           <span>Vui lòng nhập thông tin</span>
                         )}
-                      {accountContext.phone && accountContext.findAccountByPhone(
-                        accountContext.phone,
-                        listAccount
-                      ) && <span>Số điện thoại đã tồn tại</span>}
+                      {accountContext.phone &&
+                        accountContext.findAccountByPhone(
+                          accountContext.phone,
+                          listAccount
+                        ) && <span>Số điện thoại đã tồn tại</span>}
                     </div>
                   )}
                 </Field>
@@ -183,6 +188,7 @@ export default function LogUp({
                       accountContext.phone,
                       accountContext.pass
                     );
+                    addAccountToStore(accountContext.fullName);
                   }
                 }}
               >
