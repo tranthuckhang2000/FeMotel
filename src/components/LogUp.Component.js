@@ -2,6 +2,8 @@ import React, { useState, useContext, createContext, useEffect } from "react";
 import { AccountContext } from "../contexts/Account.Context";
 import { Button, FormGroup, Label, Input } from "reactstrap";
 import { Form, Field } from "react-final-form";
+import { useNavigate } from "react-router-dom";
+
 const onSubmit = (values) => {
   console.log(values);
 };
@@ -13,10 +15,13 @@ export default function LogUp({
   getAllAccount,
 }) {
   document.title = "Đăng Ký";
+  const navigate = useNavigate();
+
   const accountContext = useContext(AccountContext);
 
   const addAccountToStore = (fullName) => {
     localStorage.setItem("account", fullName);
+    navigate("/find");
   };
 
   useEffect(() => {
