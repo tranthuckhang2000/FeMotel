@@ -23,9 +23,11 @@ export default function PostMotel({ listMotel, saveMotel, getAllMotel }) {
   return (
     <div className="post-motel container">
       {!acc.current && (
-        <h1 style={{ marginTop: "270px", textAlign: "center" }}>
-          Bạn vui lòng đăng nhập để sử dụng chức năng này
-        </h1>
+        <div className="post-motel-form">
+          <h1 style={{  position: "fixed", top: "30%", left: "12%",}}>
+            Bạn vui lòng đăng nhập để sử dụng chức năng này
+          </h1>
+        </div>
       )}
       {acc.current && (
         <div className="post-motel-form">
