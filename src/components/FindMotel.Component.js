@@ -14,9 +14,9 @@ export default function FindMotel({ listMotel, getAllMotel }) {
     { id: 3, title: "30m² - 40m²", valueLeft: 30, valueRight: 40 },
   ];
   const priceArray = [
-    { id: 1, title: "Dưới 1tr" },
-    { id: 2, title: "1tr - 2tr" },
-    { id: 3, title: "2tr - 3tr" },
+    { id: 1, title: "Dưới 1tr", valueLeft: 0, valueRight: 1 },
+    { id: 2, title: "1tr - 2tr", valueLeft:1, valueRight: 2 },
+    { id: 3, title: "2tr - 3tr", valueLeft: 2, valueRight: 3 },
   ];
   const positionArray = [
     { id: 1, title: "Sư phạm kỹ thuật" },
@@ -147,23 +147,6 @@ export default function FindMotel({ listMotel, getAllMotel }) {
                           console.log("changing");
                           setFindStatus(true);
                         }}
-                      />
-                      <label>{item.title}</label>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="border-gradient">
-              <div className="filter-item">
-                <h6>Giá tiền</h6>
-                <ul>
-                  {priceArray.map((item) => (
-                    <li key={item.id}>
-                      <input
-                        type="radio"
-                        checked={item.id == price}
-                        onChange={() => setPrice(item.id)}
                       />
                       <label>{item.title}</label>
                     </li>

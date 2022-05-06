@@ -40,13 +40,25 @@ function MotelProvider({ children }) {
       if (
         listMotel[i].square >= squareLeft &&
         listMotel[i].square < squareRight
-        ) {
-          result.push(listMotel[i]);
-        }
+      ) {
+        result.push(listMotel[i]);
       }
-      console.log(result);
+    }
+    // console.log(result);
     return result;
   };
+
+  const fillMotelByPrice = (priceLeft, priceRight, listMotel) => {
+    var result = [];
+    for (let i = 0; i < listMotel.length; i++) {
+      if (listMotel[i].price >= priceLeft && listMotel[i].price < priceRight) {
+        result.push(listMotel[i]);
+      }
+    }
+    // console.log(result);
+    return result;
+  };
+
   const findMotelById = (id, listMotel) => {
     for (let i = 0; i < listMotel.length; i++) {
       if (id === listMotel[i].id) {
@@ -76,7 +88,8 @@ function MotelProvider({ children }) {
     findName,
     setFindName,
     findMotelById,
-    fillMotelBySquare
+    fillMotelBySquare,
+    fillMotelByPrice
   };
   return (
     <MotelContext.Provider value={value}>{children}</MotelContext.Provider>
